@@ -1,0 +1,17 @@
+[project]
+name = "ata-reuniao"
+version = "0.1.0"
+description = "Transcreve um vídeo de reunião e gera a ata (transcrição) em DOCX e TXT"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "faster-whisper>=1.1.0",
+    # av 19 removeu o argumento metadata_errors que o faster-whisper 1.2 ainda usa
+    "av>=11,<19",
+    "python-docx>=1.1.0",
+    # DLLs CUDA 12 (cuBLAS + cuDNN 9) para rodar o Whisper na GPU sem instalar o CUDA Toolkit
+    "nvidia-cublas-cu12",
+    "nvidia-cudnn-cu12>=9,<10",
+]
+
+[tool.uv]
+package = false
